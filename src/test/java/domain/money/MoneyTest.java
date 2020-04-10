@@ -1,7 +1,6 @@
 package domain.money;
 
-import domain.money.Money;
-import exception.MoneyException;
+import exception.IllegalMoneyException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +19,7 @@ public class MoneyTest {
     @ValueSource(ints = {0, -10, -200000})
     void Money_생성_예외처리_테스트(int source) {
         Assertions.assertThatThrownBy(() -> new Money(source))
-                .isInstanceOf(MoneyException.class)
+                .isInstanceOf(IllegalMoneyException.class)
                 .hasMessage("잘못된 금액을 입력하셨습니다.");
     }
 
