@@ -6,9 +6,11 @@ import domain.money.Money;
 import exception.IllegalMenuException;
 import exception.IllegalTableException;
 
+import java.util.Map;
+
 public class Table {
     private final int number;
-    private final Customer customer;
+    private Customer customer;
 
     // TODO: 2020/04/10 생성자의 패키지 액세스 포인트 추후 문서화
     /*package-accessed Constructor*/
@@ -44,5 +46,23 @@ public class Table {
         Money money = customer.calculateMoney();
         double discount = payment.getDiscount();
         return money.multiply(discount);
+    }
+
+    public boolean isOrdered() {
+        Money price = customer.calculateMoney();
+        return price.getMoney() > 0;
+    }
+
+    public Map<Menu, Integer> getMenus() {
+        return customer.getMenus();
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void paymentEnds() {
+        // TODO: 2020/04/10 계산 끝나고 초기화 로직...최적화!!
+        customer = new Customer();
     }
 }

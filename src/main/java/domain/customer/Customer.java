@@ -7,6 +7,7 @@ import domain.money.Money;
 import exception.IllegalMenuException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -57,5 +58,9 @@ public class Customer {
         return menus.values()
                 .stream()
                 .reduce(0,Integer::sum);
+    }
+
+    public Map<Menu, Integer> getMenus() {
+        return menus;
     }
 }

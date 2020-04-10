@@ -1,5 +1,7 @@
 package domain.table;
 
+import exception.IllegalUserInputException;
+
 import java.util.Arrays;
 
 public enum Payment {
@@ -14,12 +16,11 @@ public enum Payment {
         this.discount = discount;
     }
 
-    public Payment findPaymentByKey(String key) {
+    public static Payment findPaymentByKey(String key) {
         return Arrays.stream(values())
                 .filter(payment -> payment.key.equals(key))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
-        // TODO: 2020/04/10 예외처리 나중에 따로 만들 예정...
+                .orElseThrow(IllegalUserInputException::new);
     }
     public double getDiscount() {
         return discount;

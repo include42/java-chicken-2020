@@ -44,4 +44,8 @@ public class Menu {
     public boolean isChicken() {
         return category.equals(Category.CHICKEN);
     }
+
+    public String getName() {
+        return name;
+    }
 }
