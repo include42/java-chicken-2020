@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
+    // TODO: 2020/04/10 메뉴의 종류가 바뀔 수 있는데, 그걸 감안하지 못한 테스트코드임. 내용 전체를 추후 개선 예정.
     @Test
     void Customer_생성_테스트() {
         Customer customer = new Customer();

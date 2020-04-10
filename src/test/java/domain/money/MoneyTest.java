@@ -32,6 +32,15 @@ public class MoneyTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {100, 2000, 2147483647})
+    void Money_equals_테스트(int source) {
+        Money money1 = new Money(source);
+        Money money2 = new Money(source);
+
+        Assertions.assertThat(money1).isEqualTo(money2);
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"100,2,200", "5, 1, 5"})
     void Money_곱셈_반환값_테스트(int source, int operand, int expected) {
         Money money = new Money(source);
