@@ -1,6 +1,6 @@
 package domain.menu;
 
-import exception.MenuException;
+import exception.IllegalMenuException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +28,6 @@ public class MenuRepository {
         return menus.stream()
                 .filter(menu -> menu.getNumber() == number)
                 .findFirst()
-                .orElseThrow(MenuException::new);
+                .orElseThrow(IllegalMenuException::new);
     }
 }
