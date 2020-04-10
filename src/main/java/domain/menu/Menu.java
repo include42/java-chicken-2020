@@ -40,4 +40,8 @@ public class Menu {
     public Money getPrice() {
         return price;
     }
+
+    public boolean isChicken() {
+        return category.equals(Category.CHICKEN);
+    }
 }

@@ -1,5 +1,6 @@
 package domain.customer;
 
+import domain.menu.Category;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
 import domain.money.Money;
@@ -40,11 +41,16 @@ public class Customer {
         return new Money(price);
     }
 
+    // TODO: 2020/04/10 추후 할인부분은 리팩토링 예정
     private Money calculateEachMenu(Menu menu) {
         Money price = menu.getPrice();
         int number = menus.get(menu);
 
-        return price.multiply(number);
+        price = price.multiply(number);
+        if(menu.isChicken() && number >= 10) {
+            return price.subtract(10000 * (number / 10));
+        }
+        return price;
     }
 
     public int getMenuSize() {

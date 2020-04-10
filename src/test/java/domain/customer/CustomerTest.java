@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CustomerTest {
-    // TODO: 2020/04/10 메뉴의 종류가 바뀔 수 있는데, 그걸 감안하지 못한 테스트코드임. 내용 전체를 추후 개선 예정.
+    // TODO: 2020/04/10 메뉴의 종류가 바뀔 수 있는데, 그렇기 때문에 이 코드는 도메인에 종속적인 테스트코드임. 내용 전체를 추후 개선 예정.
     @Test
     void Customer_생성_테스트() {
         Customer customer = new Customer();
@@ -55,5 +55,15 @@ public class CustomerTest {
         customer.add(MenuRepository.valueOf(2), 2);
 
         Assertions.assertThat(customer.calculateMoney()).isEqualTo(new Money(48000));
+    }
+
+    @Test
+    void Customer_calculate_10개이상_할인_테스트() {
+        Customer customer = new Customer();
+
+        customer.add(MenuRepository.valueOf(1), 10);
+        customer.add(MenuRepository.valueOf(2), 20);
+
+        Assertions.assertThat(customer.calculateMoney()).isEqualTo(new Money(450000));
     }
 }

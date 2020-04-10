@@ -40,6 +40,16 @@ public class TableTest {
         table.order(MenuRepository.valueOf(1),5);
         table.order(MenuRepository.valueOf(2),3);
 
-        Assertions.assertThat(table.calculate()).isEqualTo(new Money(128_000));
+        Assertions.assertThat(table.calculate(Payment.CARD).getMoney()).isEqualTo(128_000);
+    }
+
+    @Test
+    void Table_calculate_현금할인_테스트() {
+        Table table = new Table(1);
+
+        table.order(MenuRepository.valueOf(1),5);
+        table.order(MenuRepository.valueOf(2),3);
+
+        Assertions.assertThat(table.calculate(Payment.BILL).getMoney()).isEqualTo(115_200);
     }
 }

@@ -22,8 +22,8 @@ public class Money {
         return money;
     }
 
-    public Money multiply(int operand) {
-        return new Money(money * operand);
+    public Money multiply(double operand) {
+        return new Money((int)(money * operand));
     }
 
     public Money subtract(int operand) {

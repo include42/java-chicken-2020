@@ -32,7 +32,9 @@ public class Table {
         customer.add(menu,menuNumber);
     }
 
-    public Money calculate() {
-        return customer.calculateMoney();
+    public Money calculate(Payment payment) {
+        Money money = customer.calculateMoney();
+        double discount = payment.getDiscount();
+        return money.multiply(discount);
     }
 }
