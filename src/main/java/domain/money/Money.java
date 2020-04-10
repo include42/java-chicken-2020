@@ -13,7 +13,7 @@ public class Money {
     }
 
     private void validate(int money) {
-        if (money <= 0) {
+        if (money < 0) {
             throw new IllegalMoneyException();
         }
     }

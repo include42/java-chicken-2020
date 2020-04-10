@@ -16,7 +16,7 @@ public class MoneyTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, -10, -200000})
+    @ValueSource(ints = {-10, -200000})
     void Money_생성_예외처리_테스트(int source) {
         Assertions.assertThatThrownBy(() -> new Money(source))
                 .isInstanceOf(IllegalMoneyException.class)
@@ -32,7 +32,7 @@ public class MoneyTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100, 2000, 2147483647})
+    @ValueSource(ints = {100, 2000, 0})
     void Money_equals_테스트(int source) {
         Money money1 = new Money(source);
         Money money2 = new Money(source);
@@ -41,7 +41,7 @@ public class MoneyTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"100,2,200", "5, 1, 5"})
+    @CsvSource(value = {"100,2,200", "5, 0, 0"})
     void Money_곱셈_반환값_테스트(int source, int operand, int expected) {
         Money money = new Money(source);
 
