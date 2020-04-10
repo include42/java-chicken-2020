@@ -2,6 +2,7 @@ package domain.table;
 
 import domain.menu.MenuRepository;
 import domain.money.Money;
+import exception.IllegalMenuException;
 import exception.IllegalTableException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,16 @@ public class TableTest {
 
         Assertions.assertThat(table.toString()).isEqualTo(Integer.toString(number));
     }
-    // TODO: 2020/04/10 order 테스트 아이디어 챙겨서 추후 작성
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 100, 2147483647})
+    void Table_order_예외_테스트(int number) {
+        Table table = new Table(1);
+
+        Assertions.assertThatThrownBy(() -> table.order(MenuRepository.valueOf(1),number))
+                .isInstanceOf(IllegalMenuException.class)
+                .hasMessage("잘못된 메뉴를 입력하셨습니다.");
+    }
 
     @Test
     void Table_calculate_테스트() {
