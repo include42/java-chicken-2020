@@ -1,5 +1,6 @@
-package domain;
+package domain.money;
 
+import domain.money.Money;
 import exception.MoneyException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package domain;
+package domain.menu;
 
 import exception.MenuException;
 
