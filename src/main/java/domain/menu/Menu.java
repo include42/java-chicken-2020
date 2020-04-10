@@ -36,4 +36,8 @@ public class Menu {
     public int getNumber() {
         return number;
     }
+
+    public Money getPrice() {
+        return price;
+    }
 }
