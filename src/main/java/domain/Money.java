@@ -5,25 +5,29 @@ import exception.MoneyException;
 import java.util.Objects;
 
 public class Money {
-    double money;
+    int money;
 
-    public Money(double money) {
+    public Money(int money) {
         validate(money);
         this.money = money;
     }
 
-    private void validate(double money) {
+    private void validate(int money) {
         if (money <= 0) {
             throw new MoneyException();
         }
     }
 
-    public double getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public Money multiply(double ratio) {
-        return new Money(money * ratio);
+    public Money multiply(int operand) {
+        return new Money(money * operand);
+    }
+
+    public Money subtract(int operand) {
+        return new Money(money - operand);
     }
 
     @Override
