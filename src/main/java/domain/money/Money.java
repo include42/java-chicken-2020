@@ -1,6 +1,6 @@
 package domain.money;
 
-import exception.MoneyException;
+import exception.IllegalMoneyException;
 
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ public class Money {
 
     private void validate(int money) {
         if (money <= 0) {
-            throw new MoneyException();
+            throw new IllegalMoneyException();
         }
     }
 
